@@ -117,7 +117,7 @@ Utilize Apache Spark for deep analysis of health event data to identify trends a
 
 * Exploratory Data Analysis (EDA):
   Conduct EDA to understand the distributions, correlations, and patterns within the data.
-  Focus on key metrics like event frequency, geographical distribution, and event type relationships.
+  Focus on key metrics like event frequency, geographical distribution, and eventThe presented topics should have materials covering the design considerations for these components.  Many of the above should also have hands-on experience for students as is evidenced in a lab or assignment including substantial experience with command line interactions with cloud native services.  It is suggested (but not required) that all of the above should have an identified learning objective which is tested. type relationships.
 
 #### Requirements
 
@@ -193,7 +193,7 @@ Choose your own adventure:
   * Web page serving graphs -- 10 points
   * A graph visualizing the events being streamed -- 10 points
   * A graph visualizing past outbreaks from the data we provided or you persisted (or both) -- 10 points
-  * A graph visualizing the next predicted outbreak event -- 15 points
+  * A graph visualizing the next predicted outbreak event (in lieu of a real time graph, you can use a graph based on your predictions based on the data you collected) -- 15 points
   * Other graphs -- 5 points each
 * Everything you produce runs from a Makefile -- 10 points
 * Everything you produce runs as a docker compose file -- 10 points
