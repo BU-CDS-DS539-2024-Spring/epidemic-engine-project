@@ -77,15 +77,7 @@ Here are some things that may be helpful while you are trying to build this solu
   * `hadoop fs -get /local-output-reduced ./ # get a file from the hdfs filesystem`
   * `hadoop fs -put ./simulated_health_events.csv /input/ # put a file in hdfs to make it available to hadoop`
 
-### Part 2: Real-time Stream Processing with Apache Flink
-
-#### Objective
-
-Implement real-time data processing using Apache Flink to identify immediate trends or anomalies in health event data.
-
-#### Tasks
-
-Canceled.
+### ~~Part 2: Real-time Stream Processing with Apache Flink~~
 
 ## Project 2
 ### Part 1: Data Ingestion and Categorization with Kafka (Due: Apr. 09)
@@ -137,7 +129,7 @@ Utilize Apache Spark for deep analysis of health event data to identify trends a
 * Check out https://buspark.io/documentation/project-guides/eda_example
 * You can expect some scaffolding to launch Apache Spark soon.
 
-### Part 3: Advanced Analytics with Apache Spark (Due: Apr. 25)
+### Part 3: Advanced Analytics with Apache Spark (Due: May 08)
 
 #### Objective
 
@@ -165,40 +157,11 @@ However, the more information you have collected in the prior parts the better y
 
 ## Project 3 (Due: May 08)
 
-### Part 1: Workflow Orchestration with Apache Airflow
+### ~~Part 1: Workflow Orchestration with Apache Airflow~~
 
-#### Objective
+### ~~Part 2: Data Visualization and Reporting~~
 
-Orchestrate the entire data pipeline using Apache Airflow, ensuring each component is executed efficiently and in the correct order.
-Each of these tasks should be the "lightweight" version.
-As in some attempt at error handing but it doesn't have to be perfect.
-
-#### Tasks
-
-* Define Airflow DAGs:
-  * Create DAGs representing the workflow, starting from data ingestion with Kafka producers, categorization, loading into Spark, analysis, and finally, risk prediction.
-* Task Scheduling and Dependencies:
-  * Schedule tasks ensuring that dependencies are met, such as not starting the Spark analysis before Kafka data ingestion and categorization are completed.
-* Error Handling and Alerts:
-  * Implement error handling within your DAGs to manage failures in tasks. Set up email alerts or notifications for task failures or retries.
-* Monitoring and Optimization:
-    Utilize Airflow's monitoring tools to track pipeline performance and identify bottlenecks or inefficiencies. Document any adjustments made to optimize the workflow.
-
-#### Tips
-
-* You can expect some scaffolding to launch Apache Airflow soon.
-
-### Part 2: Data Visualization and Reporting
-
-#### Objective
-
-Create visual representations of the processed data to highlight key findings and trends.
-
-#### Tasks
-
-TBD
-
-### Part 3: Final Integration, Connecting the Parts
+### Final Integration, Connecting the Parts
 
 Objective: Integrate all the components developed to establish an end-to-end data pipeline that simulates the Epidemic Engine, demonstrating the flow from data ingestion to visualization.
 
@@ -206,3 +169,42 @@ Objective: Integrate all the components developed to establish an end-to-end dat
 
 * Ensure everything runs end to end.
   The EDA component is not meant to be part of the final "workflow"
+
+#### Tasks with Points (total required 120)
+Everything must run in a container unless specified otherwise
+
+Required:
+* Documentation on how to launch your work (10 points)
+
+Choose your own adventure:
+* Kafka Consumer runs in a container and stores data in (you can only choose one):
+  * a CSV  (persisted outside the container) -- 5 points
+  * sqlite (persisted outside the container) -- 10 points
+  * postgres (in a separate container) --15 points
+* SparkML trained model -- 10 points
+* Model retrains from data above -- 10 points
+* Model is offered in a container -- 10 points
+* Model is refreshed/redeployed by retraining above -- 20 points
+* Model is refreshed/redeployed by retraining above w/o downtime -- 10 points
+* A prediction is made via the model and a dataset sent to it -- 5 points
+* A prediction is made via the model and windows of the data streamed from Kafka -- 10 points
+* Prediction is correct > 95% of the time (based on our data not whatever you used as test data) -- 15 points
+* Graphs:
+  * Web page serving graphs -- 10 points
+  * A graph visualizing the events being streamed -- 10 points
+  * A graph visualizing past outbreaks from the data we provided or you persisted (or both) -- 10 points
+  * A graph visualizing the next predicted outbreak event -- 15 points
+  * Other graphs -- 5 points each
+* Everything you produce runs from a Makefile -- 10 points
+* Everything you produce runs as a docker compose file -- 10 points
+* Everything you produce has docker compose health checks -- 10 points
+* Everything you produce has docker compose health checks and will restart on fail -- 10 points
+* Everything you produce runs from a python or shell script -- 5 points
+* The things you produce have tests to prove they work using pytest (these stack, i.e. 100% == 20 points)
+  * 25% -- 5 points
+  * 50% -- 5 points
+  * 75% -- 5 points
+  * 100% -- 5 points
+* Everything you produce runs in Kubernetes (recommend kind) -- 25 points
+* Documentation (these stack)
+  * How to configure the model to be retrained more / less often -- 10 points
